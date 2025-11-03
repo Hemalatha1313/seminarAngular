@@ -1,0 +1,49 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form #myForm="ngForm">
+                <fieldset>
+                    <legend class="text-center">Participants Registration Form</legend>
+
+                    <div class="form-group">
+                        <label for="courseName"><span class="req">* </span> Course Name:</label>
+                        <select name="courseName" id="courseName" [(ngModel)]="participant.courseName" class="form-control phone" maxlength="28"> 
+                            <option *ngFor="let course of courses" 
+                                [ngValue]="course.courseName">{{ course.courseName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participantName"><span class="req">* </span> Participant Name: </label>
+                        <input class="form-control" type="text" [(ngModel)]="participant.participantName" name="participantName" id="participantName" required/>
+                        <div id="errFirst"></div>
+                        <!--<div *ngIf="participantName.invalid && (participantName.dirty || participantName.touched)" class="alert">
+                        <div *ngIf="participantName.errors?.required">Name is required.</div>
+                        </div>-->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailId"><span class="req">* </span> Email ID: </label>
+                        <input class="form-control" required type="email" [(ngModel)]="participant.emailId" name="emailId" id="emailId"/>
+                        <div class="status" id="status"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="registerParticipant(myForm)">
+                    </div>
+                    
+                </fieldset>
+            </form>
+            <!--<div style="text-align: center">
+                <h5>{{message}}</h5>
+            </div>-->
+        </div>
+
+    </div>
+</div>
+
